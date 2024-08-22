@@ -1,5 +1,5 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME: Praneet S</H3>
+<H3>ENTER YOUR REGISTER NO. 212221230078</H3>
 <H3>EX. NO.1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
@@ -37,11 +37,42 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
-
+```
+import pandas as pd                                                
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+df=pd.read_csv("/content/Churn_Modelling (2).csv")         
+df.head()
+df.isnull().sum()
+df.duplicated().sum()
+df=df.drop(['Surname', 'Geography','Gender'], axis=1)
+scaler=StandardScaler()                                             
+df=pd.DataFrame(scaler.fit_transform(df))
+df.head()
+X,Y=df.iloc[:,:-1].values ,df.iloc[:,-1].values                     
+print('Input:\n',X,'\nOutput:\n',Y)
+Xtrain,Xtest,Ytrain,Ytest = train_test_split(X, Y, test_size=0.2)
+print("Xtrain:\n" ,Xtrain, "\nXtest:\n", Xtest)                     
+print("\nYtrain:\n" ,Ytrain, "\nYtest:\n", Ytest)
+```
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+### Dataset
+![Screenshot 2024-08-22 092059](https://github.com/user-attachments/assets/dce79306-5e5f-4b90-88a1-d151cb9dbb7b)
+
+### Null Values
+![Screenshot 2024-08-22 092148](https://github.com/user-attachments/assets/cd22dbe1-faf8-4f02-961a-32aab6d967a6)
+
+### Normalized Data
+![Screenshot 2024-08-22 092234](https://github.com/user-attachments/assets/22c96991-30df-49a5-96f9-e015b3f9dbee)
+
+### Data Splitting
+![Screenshot 2024-08-22 092301](https://github.com/user-attachments/assets/8f90e563-b727-40bf-8f72-eb70bff4264d)
+
+### Train and Test Data
+![Screenshot 2024-08-22 092350](https://github.com/user-attachments/assets/cdb7752f-c56a-4a83-bcbe-7ef81bbd42f7)
 
 
 ## RESULT:
